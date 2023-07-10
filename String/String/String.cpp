@@ -16,9 +16,15 @@ namespace sdds {
 String S;
 
 // MARK: String class
-// set String to empty state
+// return true is m_data == nullptr
 bool String::isEmpty()const {
     return  m_data == nullptr;
+}
+// set String to empty state
+sdds::String &String::setEmpty() {
+    m_data = nullptr;
+    m_length = 0u;
+    return *this;
 }
 // constructor
 String::String(const char* cstr) {
@@ -42,7 +48,7 @@ String& String::operator=(const String& Src) {
     // operator const char* () return the address of m_data
     if (this != &Src) { // prevents self-copying
         delete[] m_data;
-        m_data = nullptr;
+        setEmpty(); // set empty incase Src is empty
         // operator bool() same as Src.m_data
         if (Src) {
             m_length = Src.m_length;

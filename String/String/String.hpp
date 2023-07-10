@@ -17,8 +17,10 @@ class String {
     // ald init every data to safe empty state
     char* m_data{};
     size_t m_length{};
-    // set String to empty state
+    // return true is m_data == nullptr
     bool isEmpty()const;
+    // set String to empty state
+    String& setEmpty();
 public:
     // constructor
     String(const char* cstr = nullptr);
