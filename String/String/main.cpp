@@ -14,16 +14,8 @@ using namespace std;
 using namespace sdds;
 
 int main(int argc, const char * argv[]) {
-    String name = "Arin";
-    String lastname = "Api";
-    String fullname;
-//    fullname = name;
-//    fullname += " ";
-//    fullname += lastname;
-//    cout << "Name: >" << name << "<" << endl;
-//    cout << "Last name: " << lastname << "<" << endl;
-//    cout <<"Full name: " << fullname << "<" << endl;
-    fullname = name + " " + lastname;
-    cout <<"Full name: >" << fullname << "<" << endl;
+    String S = "ABC";
+    S[5] = 'D';
+    cout << ">" << S << "<" << endl;
     return 0;
 }

@@ -44,6 +44,8 @@ public:
     String operator+(const char* cstr)const;
     // concat using + >> String + String
     String operator+(const String& Scr)const;
+    // return char[idx], return the element of arr[idx]
+    char& operator[](size_t idx);
     // display m_date
     std::ostream& display(std::ostream& ostr = std::cout)const;
     // read / cin
@@ -53,7 +55,8 @@ public:
 // MARK: free function
 std::ostream& operator<<(std::ostream& ostr, const String& Roper);
 std::istream& operator>>(std::istream& istr, String& Roper);
-
+// concat using + >> const char + const char(class member)
+String operator+(const char* cstr, const String& Roper);
 
 // MARK: this prototype, extern makes a file scope variable >> global
 extern String S;

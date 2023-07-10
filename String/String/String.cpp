@@ -104,15 +104,31 @@ String& String::operator+=(const String& S) {
 }
 // concat using + >> const char + const char
 String String::operator+(const char* cstr)const {
-    String copy = *this;
-    copy += cstr;
-    return copy;
+    /*
+     String copy = *this;
+     copy += cstr;
+     return copy;
+    */
+    return String(*this) += cstr;
 }
 // concat using + >> String + String
 String String::operator+(const String& Scr)const {
-    String copy = *this;
-    copy += Scr;
-    return copy;
+    /*
+     String copy = *this;
+     copy += Scr;
+     return copy;
+    */
+    return String(*this) += Scr;
+}
+// return char[idx], return the element of arr[idx]
+char& String::operator[](size_t idx) {
+    // check limit the length of arr idx
+    if (idx >= m_length) {
+        while (m_length <= idx) {
+            (*this) += " ";
+        }
+    }
+    return m_data[idx];
 }
 // display
 ostream& String::display(ostream& ostr)const {
@@ -142,6 +158,15 @@ std::ostream& operator<<(std::ostream& ostr, const String& Roper) {
 }
 std::istream& operator>>(std::istream& istr, String& Roper) {
     return Roper.read(istr);
+}
+// concat using + >> const char + const char
+String operator+(const char* cstr, const String& Roper) {
+    /*
+     String result(cstr);
+     result += Roper;
+     return result;
+    */
+    return String(cstr) += Roper; // create a nameless String and += Roper
 }
 
 }
