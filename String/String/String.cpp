@@ -70,19 +70,49 @@ String::operator const char* ()const {
 String::operator bool() const {
     return !isEmpty();
 }
-// concat using +=
-String& String::operator+=(const String& S) {
-    char* newData = new char[m_length + S.getLength() + 1];
-    newData[0] = 0; // empty string
-    if (*this) {
-        U.strCpy(newData, m_data);
+// concat using += >> const char + const char
+String& String::operator+=(const char* cstr) {
+    if (cstr) {
+        char* newData = new char[m_length + U.strLen(cstr) + 1];
+        newData[0] = 0; // empty string
+        if (*this) {
+            U.strCpy(newData, m_data);
+        }
+        // operator const char* () return string m_data
+        U.strCat(newData, cstr);
+        m_length += U.strLen(cstr);
+        delete[] m_data;
+        m_data = newData;
     }
-    if (S) {
-        U.strCat(newData, S);
-    }
-    delete[] m_data;
-    m_data = newData;
     return *this;
+}
+// concat using += >> String + String
+String& String::operator+=(const String& S) {
+    if (S) {
+        char* newData = new char[m_length + S.getLength() + 1];
+        newData[0] = 0; // empty string
+        if (*this) {
+            U.strCpy(newData, m_data);
+        }
+        // operator const char* () return string m_data
+        U.strCat(newData, S);
+        m_length += S.getLength();
+        delete[] m_data;
+        m_data = newData;
+    }
+    return *this;
+}
+// concat using + >> const char + const char
+String String::operator+(const char* cstr)const {
+    String copy = *this;
+    copy += cstr;
+    return copy;
+}
+// concat using + >> String + String
+String String::operator+(const String& Scr)const {
+    String copy = *this;
+    copy += Scr;
+    return copy;
 }
 // display
 ostream& String::display(ostream& ostr)const {

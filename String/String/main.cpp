@@ -12,20 +12,18 @@
 
 using namespace std;
 using namespace sdds;
-void print(String S) {
-    cout << S << endl;
-}
-String get() {
-    String tmp;
-    cin >> tmp;
-    return tmp;
-}
+
 int main(int argc, const char * argv[]) {
-    String name = "Arin Apic";
-    print(name); // print(String S = name);
-    cout << "Name: ";
-    // cin >> name;
-    name = get();
-    cout << "Hello " << name << endl;
+    String name = "Arin";
+    String lastname = "Api";
+    String fullname;
+//    fullname = name;
+//    fullname += " ";
+//    fullname += lastname;
+//    cout << "Name: >" << name << "<" << endl;
+//    cout << "Last name: " << lastname << "<" << endl;
+//    cout <<"Full name: " << fullname << "<" << endl;
+    fullname = name + " " + lastname;
+    cout <<"Full name: >" << fullname << "<" << endl;
     return 0;
 }

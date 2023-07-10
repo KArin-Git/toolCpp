@@ -36,8 +36,14 @@ public:
     operator const char* ()const;
     // casting type conversion, String class to bool, be able to check for validity
     operator bool() const;
-    // concat using +=
+    // concat using += >> const char + const char
+    String& operator+=(const char* cstr);
+    // concat using += >> String + String
     String& operator+=(const String& S);
+    // concat using + >> const char + const char
+    String operator+(const char* cstr)const;
+    // concat using + >> String + String
+    String operator+(const String& Scr)const;
     // display m_date
     std::ostream& display(std::ostream& ostr = std::cout)const;
     // read / cin
