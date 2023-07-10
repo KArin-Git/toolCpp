@@ -34,6 +34,9 @@ public:
     bool ValidYesResponse(char ch);
     // validate until user's input is Y/y or N/n
     bool yes();
+    // MARK: DMA
+    // DMA from src
+    char* allocateCpy(size_t& length, const char* src)const;
 };
 
 // MARK: this prototype, extern makes a file scope variable >> global

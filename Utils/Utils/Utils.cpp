@@ -101,5 +101,16 @@ bool Utils::yes() {
    } while (!ValidYesResponse(ch) && cout << "Only (Y/y) or (N/n) is acceptable: ");
    return ch == 'y' || ch == 'Y';
 }
-
+// MARK: DMA
+// DMA from src
+char* Utils::allocateCpy(size_t& length, const char* src)const {
+    char* ret{};
+    length = 0u;
+    if (src) {
+        length = U.strLen(src);
+        ret = new char[length + 1];
+        U.strCpy(ret, src);
+    }
+    return ret;
+}
 }

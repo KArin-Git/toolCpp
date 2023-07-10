@@ -40,10 +40,13 @@ public:
     String& operator+=(const String& S);
     // display m_date
     std::ostream& display(std::ostream& ostr = std::cout)const;
+    // read / cin
+    std::istream& read(std::istream& istr = std::cin);
 };
 
 // MARK: free function
 std::ostream& operator<<(std::ostream& ostr, const String& Roper);
+std::istream& operator>>(std::istream& istr, String& Roper);
 
 
 // MARK: this prototype, extern makes a file scope variable >> global

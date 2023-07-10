@@ -91,10 +91,27 @@ ostream& String::display(ostream& ostr)const {
     }
     return ostr;
 }
+// read / cin
+std::istream& String::read(std::istream& istr) {
+    char tmp[4096]{}; // limit arr size
+    istr.getline(tmp, 4096);
+    // same as if(istr.fail())
+    if (istr) {
+        if (*this) {
+            delete[] m_data;
+            setEmpty();
+        }
+        m_data = U.allocateCpy(m_length, tmp);
+    }
+    return istr;
+}
 
 // MARK: free function
 std::ostream& operator<<(std::ostream& ostr, const String& Roper) {
     return Roper.display(ostr);
+}
+std::istream& operator>>(std::istream& istr, String& Roper) {
+    return Roper.read(istr);
 }
 
 }
