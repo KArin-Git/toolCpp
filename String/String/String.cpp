@@ -121,14 +121,13 @@ String String::operator+(const String& Scr)const {
     return String(*this) += Scr;
 }
 // return char[idx], return the element of arr[idx]
-char& String::operator[](size_t idx) {
-    // check limit the length of arr idx
-    if (idx >= m_length) {
-        while (m_length <= idx) {
-            (*this) += " ";
-        }
+const char& String::operator[](size_t idx)const {
+    const char* ret = &m_junk;
+    if (*this) {
+        // check limit the length of arr idx >> return gabage
+        ret = &m_data[idx % m_length];
     }
-    return m_data[idx];
+    return *ret;
 }
 // display
 ostream& String::display(ostream& ostr)const {

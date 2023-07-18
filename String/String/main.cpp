@@ -13,9 +13,14 @@
 using namespace std;
 using namespace sdds;
 
+void prnChar(const String& S, size_t idx) {
+    cout << S[idx] << endl;
+}
+
 int main(int argc, const char * argv[]) {
     String S = "ABC";
     S[5] = 'D';
-    cout << ">" << S << "<" << endl;
+    // cout << ">" << S << "<" << endl;
+    prnChar(S, 7);
     return 0;
 }

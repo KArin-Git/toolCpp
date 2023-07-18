@@ -17,6 +17,7 @@ class String {
     // ald init every data to safe empty state
     char* m_data{};
     size_t m_length{};
+    char m_junk;
     // return true is m_data == nullptr
     bool isEmpty()const;
     // set String to empty state
@@ -45,7 +46,7 @@ public:
     // concat using + >> String + String
     String operator+(const String& Scr)const;
     // return char[idx], return the element of arr[idx]
-    char& operator[](size_t idx);
+    const char& operator[](size_t idx)const;
     // display m_date
     std::ostream& display(std::ostream& ostr = std::cout)const;
     // read / cin
