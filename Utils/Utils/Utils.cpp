@@ -82,6 +82,26 @@ char* Utils::strCat(char* des, const char* src)const {
     des[i + len] = char(0);
     return des;
 }
+// strstr
+const char* Utils::strStr(const char* str1, const char* str2) {
+    int found = 0;
+    const char* result = nullptr;
+    int i;
+    int j;
+    
+    for (i = 0; str1[i] != '\0' && !found; i++) {
+        if (str1[i] == str2[0]) {
+            result = &str1[i];
+            found = 1;
+            for (j = 0; str2[j] != '\0'; j++, i++) {
+                if (str1[i] != str2[j]) {
+                    result = nullptr;
+                }
+            }
+        }
+    }
+    return result;
+}
 
 // MARK: Utils
 // flush keyboard buffer until '\n
@@ -101,6 +121,7 @@ bool Utils::yes() {
    } while (!ValidYesResponse(ch) && cout << "Only (Y/y) or (N/n) is acceptable: ");
    return ch == 'y' || ch == 'Y';
 }
+
 // MARK: DMA
 // DMA from src
 char* Utils::allocateCpy(size_t& length, const char* src)const {
